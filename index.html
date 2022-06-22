@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:#25eddcef;
+        }
+h1 {
+			margin: 30px;
+			font-family: "Lobster", cursive;
+			text-shadow: 5px 0 #0be52b;
+			font-size: 4.5rem;
+			color: #f30a0a;
+			text-align: center;
+		}
+        h1:hover{
+            color: #1f0593;
+            font-size:110px;
+        }
+h2{
+    	margin: 20px;
+			font-family: "Lobster", cursive;
+			text-shadow: 5px 0 #232931;
+			font-size: 4.5rem;
+			color: #c0c522;
+			text-align: center;
+}
+        .container {
+			width: 70%;
+			margin: auto;
+			text-align: center;
+		}
+.member{
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: rgb(237, 34, 210);
+    font-size:30px;
+}
+
+
+#roll {
+			background: #4ecca3;
+			font-family: "Indie Flower", cursive;
+			border-radius: 7px;
+			color: #ffff;
+			font-size: 30px;
+			padding: 16px 25px 16px 25px;
+			text-decoration: none;
+            margin-top: 50px;
+		}
+
+        #roll:hover {
+			background: #232931;
+			text-decoration: none;
+		}
+
+        .a{
+            font-size: 30px;
+            font-weight: bold;
+        }
+#plate{
+    display:flex;
+    justify-content:space-around;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+		<h1>THROW DICE</h1>
+        <h2 id="winner">Winner</h2>
+<div id="plate">
+		<div class="dice">
+			<p class="member">Member 1</p>
+			<div id="m1-score" class="a">0</div>
+		</div>
+
+		<div class="dice">
+			<p class="member">Member 2</p>
+			<div id="m2-score" class="a">0</div>
+		</div>
+        <div class="dice">
+			<p class="member">Member 3</p>
+			<div id="m3-score" class="a">0</div>
+		</div>
+	</div>
+</div>
+	<div class="container">
+		<button type="button" id="roll" >Roll the Dice</button>
+	</div>
+    <script>
+    var winner=document.querySelector("#winner");
+    var member1=document.querySelector("#m1-score");
+    var member2=document.querySelector("#m2-score");
+    var member3=document.querySelector("#m3-score");
+
+
+ document.querySelector("#roll").addEventListener("click",onclick)
+
+ function onclick(){
+    event.preventDefault();
+    member1.innerText=Math.floor(Math.random()*6)+1;
+    member2.innerText=Math.floor(Math.random()*6)+1;
+    member3.innerText=Math.floor(Math.random()*6)+1;
+if(member1.innerText>member2.innerText && member1.innerText>member3.innerText)
+
+       {              
+        winner.innerText="WINNNER:MEMBER 1"
+        member1.style.color="green"
+
+        if(member2.innerText>member3.innerText)
+        {
+        member1.style.color="green"
+        member2.style.color="black"
+        member3.style.color="red"
+        }
+
+        else if(member3.innerText>member2.innerText)
+        {
+        member1.style.color="green"
+        member3.style.color="black"
+        member2.style.color="red"
+                }
+
+                else if(member3.innerText==member2.innerText){
+        member2.style.color="green"
+       member3.style.color="red"
+       member1.style.color="red"
+    }
+        }
+
+else if((member1.innerText==member3.innerText&&member3.innerText>member2.innerText)||(member1.innerText==member2.innerText&&member2.innerText>member3.innerText))
+{winner.innerText="Drow"
+member1.style.color="blue"
+member2.style.color="blue"
+member3.style.color="blue"
+}
+
+
+else if(member2.innerText>member1.innerText && member2.innerText>member3.innerText )
+   { winner.innerText="WINNNER:MEMBER 2"
+      member2.style.color="green"
+
+    if(member1.innerText>member3.innerText)
+     {
+      member2.style.color="green"
+      member1.style.color="black"
+      member3.style.color="red"
+     }
+
+else if(member3.innerText>member1.innerText)
+     {
+       member2.style.color="green"
+       member3.style.color="black"
+       member1.style.color="red"
+     }
+    else if(member3.innerText==member1.innerText){
+        member2.style.color="green"
+       member3.style.color="red"
+       member1.style.color="red"
+    }
+}
+
+else if( (member2.innerText==member1.innerText && member1.innerText>member3.innerText )||(member2.innerText==member3.innerText && member3.innerText>member1.innerText))
+{winner.innerText="Drow"
+member1.style.color="blue"
+member2.style.color="blue"
+member3.style.color="blue"
+}
+
+
+
+else if (member3.innerText>member1.innerText && member3.innerText>member2.innerText )
+   {winner.innerText="WINNNER:MEMBER 3"
+   member3.style.color="green"
+   
+
+   if(member1.innerText>member2.innerText)
+   {
+   member3.style.color="green"
+   member1.style.color="black"
+   member2.style.color="red"
+}
+
+else if(member2.innerText>member1.innerText)
+{
+   member3.style.color="green"
+   member2.style.color="black"
+   member1.style.color="red"
+}
+else if(member1.innerText==member2.innerText){
+        member3.style.color="green"
+       member2.style.color="red"
+       member1.style.color="red"
+    }
+
+}
+else if( (member3.innerText==member1.innerText && member1.innerText>member2.innerText) || (member3.innerText==member2.innerText&&member2.innerText>member1.innerText))
+{winner.innerText="Drow"
+member1.style.color="blue"
+member2.style.color="blue"
+member3.style.color="blue"
+}
+
+else if(member3.innerText==member1.innerText && member1.innerText==member2.innerText)
+{winner.innerText="Drow"
+member1.style.color="red"
+member2.style.color="red"
+member3.style.color="red"
+}
+
+ }
+  </script>
+</body>
+</html>
