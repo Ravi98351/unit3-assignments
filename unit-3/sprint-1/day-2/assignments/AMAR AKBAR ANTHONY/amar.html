@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+var obj1={
+    name:"Amar",
+    place:"Goa",
+    skill:"singing",
+    skillOperate: function(){
+        console.log("Amar has"+" "+this.skill+" "+"skill")
+    },
+}
+
+var obj2={
+    name:"Akbar",
+    place:"Mumbai",
+    skill:"chef",
+    skillOperate: function(){
+        console.log("Akbar has"+" "+this.skill+" "+"skill")
+    },
+}
+
+var obj3={
+    name:"Anthony",
+    place:"Kashmir",
+    skill:"magician",
+    skillOperate: function(){
+        console.log("Anthony has"+" "+this.skill+" "+"skill")
+    },
+}
+
+obj1.skillOperate.call(obj2)
+obj1.skillOperate.call(obj3)
+
+
+obj2.skillOperate.call(obj1)
+obj2.skillOperate.call(obj3)
+
+</script>

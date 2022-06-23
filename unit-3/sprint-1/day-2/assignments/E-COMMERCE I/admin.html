@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN WORK</title>
+</head>
+<body>
+    <h1 style="text-align:center ;">E-Commerce admin panel dashboard</h1>
+    <form  id="form">
+
+          <input type="text" id="name" placeholder="product nme"/>
+          <input type="text" id="category" placeholder="Category">
+          <input type="text" id="image" placeholder="img Url"> 
+          <input type="number" id="price" placeholder="Price">
+          
+          <select id="gender">
+            <option value="SELECT GENDER">Select gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMAIL">Female</option>
+              <option value="KID">Kid</option>
+          </select>
+          <select id="sold">
+              <option value="TRUE">False</option>
+              <option value="FALSE">True</option>
+          </select>
+          <input type="submit" id="add" value="ADD PRODUCT"/>
+         
+     </form>
+</body>
+</html>
+<script>
+document.querySelector("#form").addEventListener("submit",addproduct)
+
+var productarr=JSON.parse(localStorage.getItem("products"))||[];
+
+function addproduct(event){
+    event.preventDefault()
+
+    var product=form.name.value;
+    
+    var category=form.category.value;
+
+    var img_url=form.image.value;
+    
+    var price=form.price.value;
+
+    var gender=form.gender.value;
+
+    var sold=form.sold.value;
+
+    const object=new Product(product,category,img_url,price,gender,sold)
+
+productarr.push(object)
+
+   localStorage.setItem("products" ,JSON.stringify(productarr));
+}
+
+
+function Product(product,category,img_url,price,gender,sold){
+this.product=product
+this.category=category
+this.img_url=img_url
+this.price=price
+this.gender=gender
+this.sold=sold
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

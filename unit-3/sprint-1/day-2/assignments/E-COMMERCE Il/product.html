@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product page</title>
+    <style>
+#container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(100px);
+     gap:70px;
+
+}
+
+</style>
+</head>
+<body>
+
+    <h1>All Products Are Here</h1>
+    <div id="counter">Total :</div>
+    <div id="container">
+
+    </div>
+
+</body>
+
+<script>
+
+var productarr=JSON.parse(localStorage.getItem("products"))||[];
+
+console.log(productarr)
+
+
+
+function displaydata(product){
+    product.forEach(function(elem,index){
+        
+// var bigbox=document.querySelector("#container")
+var box=document.createElement("div");
+var h1=document.createElement("h3")
+h1.innerText=elem.product;
+ 
+var h2=document.createElement("h3")
+h2.innerText=elem.category;
+
+var img=document.createElement("img")
+img.setAttribute("src",elem.img_url);
+img.style.height="200px"
+img.style.width="200px"
+
+var h4=document.createElement("h3")
+h4.innerText=elem.price;
+
+var h5=document.createElement("h3")
+h5.innerText=elem.gender;
+
+var btn1=document.createElement("button")
+btn1.innerText="Remove";
+
+btn1.addEventListener("click",function(){
+    remove(elem,index)
+})
+
+
+
+
+box.append(img,h1,h2,h4,h5,btn1)
+
+
+document.querySelector("#container").append(box)
+     
+ })
+}
+
+displaydata(productarr);
+
+
+function remove(elem,index)
+{
+
+
+ productarr.splice(index,1);
+ 
+ localStorage.setItem("products",JSON.stringify(productarr))
+  window.location.reload()
+
+ 
+}
+
+var count=productarr.length
+document.querySelector("#counter").append(count)
+
+</script>
+</html>
